@@ -50,13 +50,15 @@ public class Cart {
     public double getDiscount(int numberOfUniqueVolumes) {
         if (numberOfUniqueVolumes < 0) throw new IllegalArgumentException("Number of volumes can't be negative.");
 
-        return switch (numberOfUniqueVolumes) {
-            case 0, 1 -> 0;
-            case 2 -> 0.05;
-            case 3 -> 0.1;
-            case 4 -> 0.2;
-            default -> 0.25;
-        };
+        switch (numberOfUniqueVolumes) {
+            case 0:
+            case 1:
+                return 0;
+            case 2: return 0.05;
+            case 3: return 0.1;
+            case 4: return 0.2;
+            default: return 0.25;
+        }
     }
 
     public int getNumberOfBooksInCart(List<Integer> books) {
